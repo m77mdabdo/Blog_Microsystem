@@ -9,7 +9,8 @@
 
             <!--end::Brand Image-->
             <!--begin::Brand Text-->
-            <a class="navbar-brand text-white" href="index.html">Blog_<span>Microsystem<i class="fa fa-leaf"></i></span></a>
+            <a class="navbar-brand text-white" href="index.html">Blog_<span>Microsystem<i
+                        class="fa fa-leaf"></i></span></a>
 
             <!--end::Brand Text-->
         </a>
@@ -22,121 +23,131 @@
             <!--begin::Sidebar Menu-->
             <ul class="nav sidebar-menu flex-column" data-lte-toggle="treeview" role="menu" data-accordion="false">
 
-                {{-- <li class="nav-item menu-open ">
-                    <a href="{{route('allusers') }}" class="nav-link active">
-                        <i class="nav-icon bi bi-person "></i>
-                        <p>Admin</p>
+                {{-- Dashboard --}}
+                <li class="nav-item">
+                    <a href="{{ route('admin.home') }}" class="nav-link">
+                        <i class="nav-icon bi bi-speedometer2"></i>
+                        <p>Dashboard</p>
                     </a>
                 </li>
 
-                <li class="nav-item ">
+                {{-- Users Management --}}
+                <li class="nav-item">
                     <a href="#" class="nav-link">
-                        <i class="nav-icon bi bi-clipboard-fill"></i>
+                        <i class="nav-icon bi bi-people"></i>
                         <p>
-                            USERS
-
+                            Users
+                            <i class="nav-arrow bi bi-chevron-right"></i>
                         </p>
-                        <i class="nav-arrow bi bi-chevron-right"></i>
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="{{route('allDoctors')}}" class="nav-link">
-                              <i class="bi bi-capsule"></i>
-                                <p>Doctors</p>
+                            <a href="{{ route('users.index') }}" class="nav-link">
+                                <i class="bi bi-list"></i>
+                                <p>All Users</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="./layout/fixed-sidebar.html" class="nav-link">
-                                <i class="nav-icon bi bi-easel"></i>
-                                <p>Coach</p>
+                            <a href="{{ route('users.create') }}" class="nav-link">
+                                <i class="bi bi-person-plus"></i>
+                                <p>Add User</p>
                             </a>
                         </li>
-                        {{-- <li class="nav-item">
-                            <a href="./layout/fixed-header.html" class="nav-link">
-                                <i class="nav-icon bi bi-people"></i>
-                                <p>Customer</p>
-                            </a>
-                        </li> --}}
                     </ul>
-                {{-- </li>
-
-                <li class="nav-item menu-open">
-                    <a href="about-us.html" class="nav-link active">
-                        <i class="nav-icon bi bi-gear-wide-connected"></i>
-                        <p>Services</p>
-                    </a>
                 </li>
 
-                <li class="nav-item menu-open">
-                    <a href="about-us.html" class="nav-link active">
-                        <i class="nav-icon bi bi-journal-text"></i>
-                        <p>Stories</p>
+                {{-- Posts Management --}}
+                {{-- <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon bi bi-file-earmark-text"></i>
+                        <p>
+                            Posts
+                            <i class="nav-arrow bi bi-chevron-right"></i>
+                        </p>
                     </a>
-                </li>
-
-                <li class="nav-item menu-open">
-                    <a href="about-us.html" class="nav-link active">
-                        <i class="nav-icon bi bi-pencil-square"></i>
-                        <p>Blog</p>
-                    </a>
-                </li>
-
-                <li class="nav-item menu-open">
-                    <a href="about-us.html" class="nav-link active">
-                        <i class="nav-icon bi bi-envelope"></i>
-                        <p>Contact</p>
-                    </a>
-                </li>
-
-
-                <li class="nav-item ">
-                <a href="#" class="nav-link">
-                  <i class="nav-icon bi bi-shield-lock"></i>
-                  <p>
-                    Auth
-                    <i class="nav-arrow bi bi-chevron-right"></i>
-                  </p>
-                </a>
-
                     <ul class="nav nav-treeview">
-                      <li class="nav-item">
-                        <a href="./examples/login.html" class="nav-link">
-                          <i class="nav-icon bi bi-box-arrow-in-right"></i>
-                          <p>Login</p>
-                        </a>
-                      </li>
-                      <li class="nav-item">
-                        <a href="./examples/register.html" class="nav-link">
-                          <i class="nav-icon bi bi-person-plus"></i>
-                          <p>Register</p>
-                        </a>
-                      </li>
-                      <li class="nav-item">
-                        <a href="./examples/register.html" class="nav-link">
-                          <i class="nav-icon bi bi-box-arrow-right"></i>
-                          <p>Logout</p>
-                        </a>
-                      </li>
+                        <li class="nav-item">
+                            <a href="{{ route('posts.index') }}" class="nav-link">
+                                <i class="bi bi-list-task"></i>
+                                <p>All Posts</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('posts.create') }}" class="nav-link">
+                                <i class="bi bi-plus-square"></i>
+                                <p>Add Post</p>
+                            </a>
+                        </li>
                     </ul>
-                  </li>
+                </li> --}}
 
-
-               <li class="nav-item menu-open">
-                    <a href="about-us.html" class="nav-link active">
-                        <i class="nav-icon  bi bi-info-circle"></i>
-                        <p>About Us</p>
+                {{-- Payments --}}
+                {{-- <li class="nav-item">
+                    <a href="{{ route('payments.index') }}" class="nav-link">
+                        <i class="nav-icon bi bi-credit-card"></i>
+                        <p>Payments</p>
                     </a>
-                </li>
+                </li> --}}
 
+                {{-- Profile --}}
+                {{-- <li class="nav-item">
+                    <a href="{{ route('profile.edit') }}" class="nav-link">
+                        <i class="nav-icon bi bi-person-circle"></i>
+                        <p>Profile</p>
+                    </a>
+                </li> --}}
 
-               <li class="nav-item menu-open">
-                    <a href="about-us.html" class="nav-link active">
-                        <i class="nav-icon  bi bi-info-circle"></i>
+                {{-- Auth --}}
+                {{-- <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon bi bi-shield-lock"></i>
+                        <p>
+                            Authentication
+                            <i class="nav-arrow bi bi-chevron-right"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="{{ route('login') }}" class="nav-link">
+                                <i class="bi bi-box-arrow-in-right"></i>
+                                <p>Login</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('register') }}" class="nav-link">
+                                <i class="bi bi-person-plus"></i>
+                                <p>Register</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <form action="{{ route('logout') }}" method="POST" class="d-inline">
+                                @csrf
+                                <button type="submit" class="nav-link btn btn-link p-0 text-start">
+                                    <i class="bi bi-box-arrow-right"></i>
+                                    <p>Logout</p>
+                                </button>
+                            </form>
+                        </li>
+                    </ul>
+                </li> --}}
+
+                {{-- Settings --}}
+                {{-- <li class="nav-item">
+                    <a href="{{ route('settings') }}" class="nav-link">
+                        <i class="nav-icon bi bi-gear"></i>
+                        <p>Settings</p>
+                    </a>
+                </li> --}}
+
+                {{-- Help --}}
+                {{-- <li class="nav-item">
+                    <a href="{{ route('help') }}" class="nav-link">
+                        <i class="nav-icon bi bi-info-circle"></i>
                         <p>Help</p>
                     </a>
-                </li> --}} 
-
+                </li> --}}
             </ul>
+
             <!--end::Sidebar Menu-->
         </nav>
     </div>
