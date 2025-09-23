@@ -2,7 +2,16 @@
 
 namespace App\Providers;
 
+
+use App\Repositories\PostRepository;
+use Illuminate\Pagination\Paginator;
+use App\Repositories\AdminRepository;
+use App\Repositories\EditorRepository;
 use Illuminate\Support\ServiceProvider;
+use App\RepositoryInterface\PostRepositoryInterface;
+use App\RepositoryInterface\AdminRepositoryInterface;
+use App\RepositoryInterface\EditorRepositoryInterface;
+
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -12,6 +21,9 @@ class AppServiceProvider extends ServiceProvider
     public function register(): void
     {
         //
+        $this->app->bind(AdminRepositoryInterface::class, AdminRepository::class);
+        $this->app->bind(EditorRepositoryInterface::class, EditorRepository::class);
+        $this->app->bind(PostRepositoryInterface::class, PostRepository::class);
     }
 
     /**
@@ -20,5 +32,7 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         //
+        // Paginator::useBootstrapFive();
+
     }
 }
