@@ -10,7 +10,7 @@ class AdminRepository implements AdminRepositoryInterface
 {
     public function all()
     {
-        return User::where('role', 'admin')->paginate(2);
+        return User::where('role', 'admin')->paginate(10);
     }
 
     public function find($id)

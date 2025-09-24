@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Post\StorePostRequest;
 use App\Http\Requests\Post\UpdatePostRequest;
 use App\RepositoryInterface\PostRepositoryInterface;
+use Illuminate\Support\Facades\Auth;
 
 class PostController extends Controller
 {
@@ -19,13 +20,30 @@ class PostController extends Controller
 
     public function index()
     {
+        $user = Auth::user();
+
+    if ($user->role === 'admin') {
+
         $posts = $this->postRepository->all();
-        return view('post.index', compact('posts'));
+    } else {
+
+        $posts = $this->postRepository->all()->where('user_id', $user->id);
     }
+        return view('admin.post.index', compact('posts'));
+    }
+
+    public function show($id)
+{
+
+    $post = $this->postRepository->find($id);
+    $post->load(['user', 'payment']);
+
+    return view('admin.post.show', compact('post'));
+}
 
     public function create()
     {
-        return view('post.create');
+        return view('admin.post.create');
     }
 
     public function store(StorePostRequest $request)
@@ -36,7 +54,7 @@ class PostController extends Controller
     public function edit($id)
     {
         $post = $this->postRepository->find($id);
-        return view('post.edit', compact('post'));
+        return view('admin.post.edit', compact('post'));
     }
 
     public function update(UpdatePostRequest $request, $id)

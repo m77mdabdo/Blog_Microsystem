@@ -9,7 +9,7 @@ class EditorRepository implements EditorRepositoryInterface
 {
     public function all()
     {
-        return User::where('role', 'editor')->get();
+        return User::where('role', 'editor')->paginate(10);
     }
 
      public function findWithPosts($id)
