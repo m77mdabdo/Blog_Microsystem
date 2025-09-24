@@ -22,12 +22,15 @@ class UserSeeder extends Seeder
             'password' => bcrypt('password'),
         ]);
 
-    
+
         User::factory()->create([
             'name' => 'Editor User',
             'email' => 'editor@example.com',
             'role' => 'editor',
             'password' => bcrypt('password'),
         ]);
+
+          User::factory(50)->create();
+
     }
 }

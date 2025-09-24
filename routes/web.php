@@ -31,7 +31,7 @@ Route::controller(HomeController::class)->group(function(){
 
 });
 
-Route::controller(AdminController::class)->group(function(){
+Route::controller(AdminController::class) ->middleware('role:admin')->group(function(){
     Route::get('admins','index')->name('admins.index');
     Route::get('admins/show/{id}','show')->name('admins.show');
     Route::get('admins/create','create')->name('admins.create');
@@ -42,7 +42,7 @@ Route::controller(AdminController::class)->group(function(){
 
 });
 
-Route::controller(EditorController::class)->group(function(){
+Route::controller(EditorController::class) ->middleware('role:admin')->group(function(){
     Route::get('editors','index')->name('editors.index');
     Route::get('editors/show/{id}','show')->name('editors.show');
     Route::get('editors/create','create')->name('editors.create');
@@ -55,13 +55,13 @@ Route::controller(EditorController::class)->group(function(){
 
 
 Route::controller(PostController::class)->group(function(){
-    Route::get('posts','index')->name('posts.index');
-    Route::get('posts/show/{id}','show')->name('posts.show');
+    Route::get('posts','index')->name('posts.index') ;
+    Route::get('posts/show/{id}','show')->name('posts.show') ->middleware('role:admin');
     Route::get('posts/create','create')->name('posts.create');
     Route::post('posts/store','store')->name('posts.store');
     Route::get('posts/edit/{id}','edit')->name('posts.edit');
     Route::put('posts/{id}','update')->name('posts.update');
-    Route::delete('posts/delete/{id}','destroy')->name('posts.delete');
+    Route::delete('posts/delete/{id}','destroy')->name('posts.delete') ->middleware('role:admin');
 
 });
 
