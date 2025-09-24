@@ -1,6 +1,7 @@
 
   <!--begin::Head-->
  @include('admin.app.head')
+ 
   <!--end::Head-->
   <!--begin::Body-->
   <body class="layout-fixed sidebar-expand-lg bg-body-tertiary">
