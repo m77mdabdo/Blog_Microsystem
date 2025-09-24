@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\StoreAdminRequest;
+use App\Http\Requests\Admin\UpdateAdminRequest;
 use App\RepositoryInterface\AdminRepositoryInterface;
 
 class AdminController extends Controller
@@ -18,52 +20,44 @@ class AdminController extends Controller
     public function index()
     {
         $admins = $this->adminRepository->all();
-        return view('admin.index', compact('admins'));
+        return view('admin.admin.index', compact('admins'));
+    }
+    public function show($id)
+    {
+        $admin = $this->adminRepository->find($id);
+        return view('admin.admin.show', compact('admin'));
     }
 
     public function create()
     {
-        return view('admin.create');
+        return view('admin.admin.create');
     }
 
-    public function store(Request $request)
-    {
-        $data = $request->validate([
-            'name' => 'required|string|max:255',
-            'email' => 'required|email|unique:users,email',
-            'password' => 'required|min:6|confirmed',
-        ]);
-
-        $data['password'] = bcrypt($data['password']);
-        $this->adminRepository->create($data);
-
-        return redirect()->route('admins.index')->with('success', 'Admin created successfully.');
-    }
+    public function store(StoreAdminRequest $request)
+{
+    $data = $request->validated();
+    $data['password'] = bcrypt($data['password']);
+    $this->adminRepository->create($data);
+    return redirect()->route('admins.index')->with('success', 'Admin created successfully.');
+}
 
     public function edit($id)
     {
         $admin = $this->adminRepository->find($id);
-        return view('admin.edit', compact('admin'));
+        return view('admin.admin.edit', compact('admin'));
     }
 
-    public function update(Request $request, $id)
-    {
-        $data = $request->validate([
-            'name' => 'required|string|max:255',
-            'email' => 'required|email|unique:users,email,' . $id,
-            'password' => 'nullable|min:6|confirmed',
-        ]);
-
-        if (!empty($data['password'])) {
-            $data['password'] = bcrypt($data['password']);
-        } else {
-            unset($data['password']);
-        }
-
-        $this->adminRepository->update($id, $data);
-
-        return redirect()->route('admins.index')->with('success', 'Admin updated successfully.');
+   public function update(UpdateAdminRequest $request, $id)
+{
+    $data = $request->validated();
+    if (!empty($data['password'])) {
+        $data['password'] = bcrypt($data['password']);
+    } else {
+        unset($data['password']);
     }
+    $this->adminRepository->update($id, $data);
+    return redirect()->route('admins.index')->with('success', 'Admin updated successfully.');
+}
 
     public function destroy($id)
     {
