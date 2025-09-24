@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests\Editor;
 
+use App\Models\User;
 use Illuminate\Foundation\Http\FormRequest;
 
 class UpdateEditorRequest extends FormRequest
@@ -22,12 +23,15 @@ class UpdateEditorRequest extends FormRequest
     public function rules(): array
     {
          $id = $this->route('editor');
+         $id = $id instanceof User ? $id->id : $id;
         return [
             //
             'name'     => 'required|string|max:255',
             'email'    => 'required|email|unique:users,email,' . $id,
             'password' => 'nullable|min:6|confirmed',
-
+            'role'     => 'required|in:editor,admin',
+            // 'status'   => 'required|in:published,draft',
+            // 'is_paid'  => 'required|in:0,1',
         ];
     }
 }

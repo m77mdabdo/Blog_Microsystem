@@ -21,7 +21,7 @@ class UpdateAdminRequest extends FormRequest
             'name'     => 'required|string|max:255',
             'email'    => 'required|email|unique:users,email,' . $id,
             'password' => 'nullable|min:6|confirmed',
-            'role'     => 'required|in:admin,editor', // ضيف اللي محتاجه هنا
+            'role'     => 'required|in:admin,editor', 
         ];
     }
 }

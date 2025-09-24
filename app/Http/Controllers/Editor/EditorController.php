@@ -23,10 +23,12 @@ class EditorController extends Controller
         return view('admin.editor.index', compact('editors'));
     }
     public function show($id)
-    {
-        $editor = $this->editorRepository->find($id);
-        return view('admin.editor.show', compact('editor'));
-    }
+{
+    $editor = $this->editorRepository->find($id);
+    $posts = $editor->posts;
+    return view('admin.editor.show', compact('editor', 'posts'));
+}
+
 
 
     public function create()
@@ -45,7 +47,8 @@ class EditorController extends Controller
     public function edit($id)
     {
         $editor = $this->editorRepository->find($id);
-        return view('admin.editor.edit', compact('editor'));
+         $posts = $editor->posts;
+        return view('admin.editor.edit', compact('editor',  'posts'));
     }
 
    public function update(UpdateEditorRequest $request, $id)
