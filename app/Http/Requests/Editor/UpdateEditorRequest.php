@@ -22,8 +22,7 @@ class UpdateEditorRequest extends FormRequest
      */
     public function rules(): array
     {
-         $id = $this->route('editor');
-         $id = $id instanceof User ? $id->id : $id;
+        $id = $this->route('editor') ?? $this->route('id');
         return [
             //
             'name'     => 'required|string|max:255',

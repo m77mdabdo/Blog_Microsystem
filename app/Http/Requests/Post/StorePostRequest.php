@@ -23,11 +23,11 @@ class StorePostRequest extends FormRequest
     {
         return [
             //
-             'title'   => 'required|string|max:255',
-            'content' => 'required|string',
-            'status'  => 'required|in:draft,published',
-            'user_id' => 'required|exists:users,id',
-            
+        'title.en' => 'required|string|max:255',
+        'title.ar' => 'nullable|string|max:255',
+        'content'  => 'required|string',
+        'status'   => 'nullable|in:draft,published',
+        'is_paid'  => 'nullable|boolean',
         ];
     }
 }

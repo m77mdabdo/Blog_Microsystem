@@ -14,14 +14,12 @@ class UpdateAdminRequest extends FormRequest
 
     public function rules(): array
     {
-        $id = $this->route('admin');
-          $id = $id instanceof User ? $id->id : $id;
-
+       $id = $this->route('admin') ?? $this->route('id');
         return [
-            'name'     => 'required|string|max:255',
-            'email'    => 'required|email|unique:users,email,' . $id,
-            'password' => 'nullable|min:6|confirmed',
-            'role'     => 'required|in:admin,editor', 
+           'name'     => 'required|string|max:255',
+        'email'    => 'required|email|unique:users,email,' . $id,
+        'password' => 'nullable|min:6|confirmed',
+        'role'     => 'required|in:admin,editor',
         ];
     }
 }

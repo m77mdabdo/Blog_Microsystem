@@ -7,10 +7,16 @@ use App\RepositoryInterface\PostRepositoryInterface;
 
 class PostRepository implements PostRepositoryInterface
 {
-    public function all()
-    {
-        return Post::paginate(10);
+    public function all($filters = [])
+{
+    $query = Post::query();
+
+    if (!empty($filters['user_id'])) {
+        $query->where('user_id', $filters['user_id']);
     }
+
+    return $query->paginate(10);
+}
 
     public function find($id)
     {

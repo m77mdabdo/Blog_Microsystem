@@ -2,17 +2,16 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Models\User;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Post;
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
-    //
     public function index()
     {
-        $allUser = User::paginate(2);
-        return view('admin.home', compact('allUser'));
+       
+        return view('admin.home');
     }
-
 }
