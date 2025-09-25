@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests\Post;
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Foundation\Http\FormRequest;
 
 class UpdatePostRequest extends FormRequest
@@ -23,9 +24,16 @@ class UpdatePostRequest extends FormRequest
     {
         return [
             //
-             'title'   => 'required|string|max:255',
-            'content' => 'required|string',
-            'status'  => 'required|in:draft,published',
+             'title.en' => 'required|string|max:255',
+            'title.ar' => 'nullable|string|max:255',
+            'content'  => 'required|string',
+            'status'   => 'required|in:draft,published',
         ];
+         if (Auth::check() && Auth::user()->role === 'admin') {
+            $rules['is_paid'] = 'sometimes|boolean';
+        }
+
+        return $rules;
     }
-}
+    }
+

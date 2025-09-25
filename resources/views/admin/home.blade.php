@@ -1,5 +1,9 @@
 @extends('admin.app.layout')
 
-@sectionMissing('content')
+@section('body')
 
-@endif
+    
+
+@endsection
+
+

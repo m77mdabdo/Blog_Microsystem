@@ -6,11 +6,14 @@
 
         <div class="card mb-3">
             <div class="card-header">
-                <strong>{{ is_array($post->title) ? json_encode($post->title) : $post->title }}</strong>
+                <strong>
+                    {{ is_array($post->title) ? $post->title['en'] ?? ($post->title['ar'] ?? 'Untitled') : $post->title }}
+                </strong>
             </div>
             <div class="card-body">
                 <p><strong>Status:</strong> {{ ucfirst($post->status) }}</p>
                 <p><strong>Content:</strong> {{ $post->content }}</p>
+
                 <p><strong>Editor:</strong>
                     <a href="{{ route('editors.show', $post->user->id) }}">
                         {{ $post->user->name }}
@@ -33,7 +36,20 @@
                     <p><strong>Status:</strong> {{ $post->payment->status ?? '-' }}</p>
                 @endif
 
-                <a href="{{ route('posts.index') }}" class="btn btn-secondary mt-3">Back to Posts</a>
+                <hr>
+                {{-- Actions --}}
+                <a href="{{ route('posts.edit', $post->id) }}" class="btn btn-warning btn-sm">Update</a>
+
+                @if (auth()->user()->role === 'admin')
+                    <form action="{{ route('posts.delete', $post->id) }}" method="POST"
+                        onsubmit="return confirm('Are you sure?')">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="btn btn-danger btn-sm w-100">Delete</button>
+                    </form>
+                @endif
+
+                <a href="{{ route('posts.index') }}" class="btn btn-secondary btn-sm">Back to Posts</a>
             </div>
         </div>
     </div>

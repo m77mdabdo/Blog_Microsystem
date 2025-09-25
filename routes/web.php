@@ -11,8 +11,8 @@ Route::get('/', function () {
     return view('auth.login');
 });
 
-Route::get('/home', function () {
-    return view('home');
+Route::get('home', function () {
+    return view('admin.home');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
@@ -55,13 +55,13 @@ Route::controller(EditorController::class) ->middleware('role:admin')->group(fun
 
 
 Route::controller(PostController::class)->group(function(){
-    Route::get('posts','index')->name('posts.index') ;
-    Route::get('posts/show/{id}','show')->name('posts.show') ->middleware('role:admin');
+    Route::get('posts','index')->name('posts.index')->middleware('role:admin,editor'); ;
+    Route::get('posts/show/{id}','show')->name('posts.show');
     Route::get('posts/create','create')->name('posts.create');
     Route::post('posts/store','store')->name('posts.store');
     Route::get('posts/edit/{id}','edit')->name('posts.edit');
     Route::put('posts/{id}','update')->name('posts.update');
-    Route::delete('posts/delete/{id}','destroy')->name('posts.delete') ->middleware('role:admin');
+    Route::delete('posts/delete/{id}','destroy')->name('posts.delete')->middleware('role:admin');
 
 });
 
