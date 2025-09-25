@@ -3,43 +3,39 @@ A simple blog system built with Laravel, featuring an API and an admin dashboard
 Users can create posts, verify payment before publishing, and dashboard users have role-based access control.
 
 
-## 🚀 Features
+## 🏗️ Features
 
-### API for Posts
-
-List published and paid posts.
-
-Create posts (requires payment).
-
-Update and delete posts.
-
-Clean and consistent API responses.
+### API
+- List posts → only published and paid posts are shown.
+- Create posts → requires payment before storing.
+- Update posts.
+- Delete posts.
+- Payment is verified before marking a post as paid.
+- Clean and consistent JSON API responses.
 
 ### Admin Dashboard
+- Post management with multi-language support.
+- Forms include: title (multi-language), content, and status.
+- Post table includes filters by status and author.
+- Shows whether a post is paid.
+- Role-based restrictions:
+  - **Admin**: full access (view, create, edit, delete, mark as paid)
+  - **Editor**: create and edit own posts only, cannot delete.
+- Custom admin action to manually mark a post as paid.
 
-Post management with filters by status and author.
+### Roles & Permissions
+- **Admin**: full access.
+- **Editor**: limited access (create/edit own posts).
+- Permissions stored and enforced in the system.
 
-View whether posts are paid.
+### Payment Integration
+- Supports payment flow before storing posts.
+- Users redirected to a payment provider (Stripe) when creating a post.
+- Posts are marked as paid only after successful payment.
 
-Role-based access:
-
-Admin: full access.
-
-Editor: can create/edit own posts, cannot delete.
-
-Custom action: mark post as paid manually.
-
-## Payment Integration
-
-Stripe integration for post payments.
-
-Only paid posts can be published.
-
-## Multi-language Support
-
-Translate post titles and content.
-
-Easy to extend with additional languages.
+### Multi-language Support
+- Title supports multiple languages.
+- Translation mechanism implemented for easy expansion.
 
 ## 🛠️ Requirements
 
@@ -69,29 +65,8 @@ composer install
 npm install
 npm run dev
 
-## 🔐 Roles & Permissions
-Admin
-Full access (view, create, edit, delete, mark paid)
 
-Editor
-Create/edit own posts, cannot delete
 
-## 🌐 Multi-language Support
-Translation files are located in resources/lang/.
+.
 
-To add a new language:
-
-Create a folder with the language code (e.g., ar for Arabic).
-
-Add translation files with keys and values.
-
-## 💳 Payment Flow 
-User creates a post via the API.
-
-Redirected to Stripe Checkout.
-
-Upon successful payment, the post is marked as paid.
-
-Only paid posts are displayed in published lists.
-
-Admins can manually mark posts as paid in the dashboard. 
+. 
