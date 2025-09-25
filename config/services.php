@@ -21,6 +21,10 @@ return [
     'resend' => [
         'key' => env('RESEND_KEY'),
     ],
+     'stripe' => [
+        'publishable_key' => env('STRIPE_PUBLISHABLE_KEY'),
+        'secret_key' => env('STRIPE_SECRET_KEY'),
+    ],
 
     'ses' => [
         'key' => env('AWS_ACCESS_KEY_ID'),
