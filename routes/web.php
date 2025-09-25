@@ -55,7 +55,7 @@ Route::controller(EditorController::class) ->middleware('role:admin')->group(fun
 
 
 Route::controller(PostController::class)->group(function(){
-    Route::get('posts','index')->name('posts.index')->middleware('role:admin,editor'); ;
+    Route::get('posts','index')->name('posts.index');
     Route::get('posts/show/{id}','show')->name('posts.show');
     Route::get('posts/create','create')->name('posts.create');
     Route::post('posts/store','store')->name('posts.store');
@@ -63,6 +63,21 @@ Route::controller(PostController::class)->group(function(){
     Route::put('posts/{id}','update')->name('posts.update');
     Route::delete('posts/delete/{id}','destroy')->name('posts.delete')->middleware('role:admin');
 
+});
+
+
+Route::get("change/{lang}", function ($lang) {
+
+
+    if ($lang == "en") {
+        session()->put("lang", "en");
+    } else if ($lang == "ar") {
+        session()->put("lang", "ar");
+    } else {
+        session()->put("lang", "en");
+    }
+
+    return redirect()->back();
 });
 
 

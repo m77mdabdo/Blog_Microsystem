@@ -53,6 +53,26 @@
                     </a>
                 </li>
 
+                 <li class="nav-item menu-items">
+            <a class="nav-link" data-bs-toggle="collapse" href="#language" aria-expanded="false"
+                aria-controls="language">
+                <span class="menu-icon">
+                    <i class="mdi mdi-translate"></i>
+                </span>
+                <span class="menu-title">{{ __('massages.language') }}</span>
+                <i class="menu-arrow"></i>
+            </a>
+            <div class="collapse" id="language">
+                <ul class="nav flex-column sub-menu">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url('change/en') }}">@lang('massages.english') </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url('change/ar') }}"> @lang('massages.arabic') </a>
+                    </li>
+                </ul>
+            </div>
+        </li>
                 {{-- Logout --}}
                 <li class="nav-item">
                     <form action="{{ route('logout') }}" method="POST" class="d-inline">

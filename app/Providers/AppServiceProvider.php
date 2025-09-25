@@ -3,6 +3,9 @@
 namespace App\Providers;
 
 
+
+
+use Illuminate\Support\Facades\App;
 use App\Repositories\AuthRepository;
 use App\Repositories\PostRepository;
 use Illuminate\Pagination\Paginator;
@@ -18,6 +21,7 @@ use App\RepositoryInterface\EditorRepositoryInterface;
 use App\RepositoryInterface\PaymentRepositoryInterface;
 use App\RepositoryInterface\EditorPostRepositoryInterface;
 
+use Illuminate\Support\Facades\Session;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -45,6 +49,7 @@ class AppServiceProvider extends ServiceProvider
     {
         //
         Paginator::useBootstrapFive();
+       App::setLocale(session::get('lang', config('app.locale')));
 
     }
 }

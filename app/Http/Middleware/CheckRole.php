@@ -8,21 +8,22 @@ use Illuminate\Http\Request;
 class CheckRole
 {
     public function handle(Request $request, Closure $next, ...$roles)
-    {
-        $user = $request->auth_user ?? null;
+{
+    $user = $request->user(); // بدل auth_user
 
-        if (!$user) {
-            return response()->json([
-                'message' => 'Unauthorized'
-            ], 401);
-        }
-
-        if (!in_array($user->role, $roles)) {
-            return response()->json([
-                'message' => 'You do not have permission to access this resource.'
-            ], 403);
-        }
-
-        return $next($request);
+    if (!$user) {
+        return response()->json([
+            'message' => 'Unauthorized'
+        ], 401);
     }
+
+    if (!in_array($user->role, $roles)) {
+        return response()->json([
+            'message' => 'You do not have permission to access this resource.'
+        ], 403);
+    }
+
+    return $next($request);
+}
+
 }
