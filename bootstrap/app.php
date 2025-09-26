@@ -23,6 +23,7 @@ return Application::configure(basePath: dirname(__DIR__))
         $middleware->alias([
             'role'    => \App\Http\Middleware\CheckRole::class,
             'ApiAuth' => \App\Http\Middleware\ApiAuth::class,
+            'CheckPayment' => \App\Http\Middleware\CheckPayment::class,
         ]);
     })
     ->withExceptions(function (Exceptions $exceptions): void {
