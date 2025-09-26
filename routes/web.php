@@ -6,7 +6,7 @@ use App\Http\Controllers\Post\PostController;
 use App\Http\Controllers\Admin\HomeController;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Editor\EditorController;
-
+use App\Http\Controllers\Payment\PaymentController;
 Route::get('/', function () {
     return view('auth.login');
 });
@@ -79,6 +79,18 @@ Route::get("change/{lang}", function ($lang) {
 
     return redirect()->back();
 });
+
+
+
+
+Route::controller(PaymentController::class)->middleware('auth')->group(function () {
+    Route::get('payment', 'create')->name('payment.create');
+    Route::post('payment-intent', 'createStripePaymentIntent')->name('stripe.paymentIntent.create');
+    Route::get('payment/confirm', 'confirm')->name('stripe.return');
+});
+
+// Webhook لا يحتاج Middleware
+Route::post('stripe/webhook', [PaymentController::class, 'handleWebhook'])->name('stripe.webhook');
 
 
 

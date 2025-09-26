@@ -10,7 +10,7 @@ use App\Models\User;
 
 class PaymentController extends Controller
 {
-   
+
     public function createCheckoutLink(Request $request)
     {
         $user = User::where('access_token', $request->header('access_token'))->first();
@@ -44,7 +44,7 @@ class PaymentController extends Controller
         ]);
     }
 
-    // Webhook Stripe لتأكيد الدفع
+    
     public function handleWebhook(Request $request)
 {
     $payload = $request->getContent();
