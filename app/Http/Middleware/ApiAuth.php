@@ -34,7 +34,7 @@ class ApiAuth
             ], 401);
         }
 
-        // دمج المستخدم مع الطلب
+        // Attach the user to the request
         $request->merge(['auth_user' => $user]);
 
         return $next($request);
