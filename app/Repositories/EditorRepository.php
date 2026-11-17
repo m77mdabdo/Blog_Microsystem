@@ -15,7 +15,7 @@ class EditorRepository implements EditorRepositoryInterface
      public function findWithPosts($id)
     {
         return User::where('role', 'editor')
-            ->with('posts') // لازم تعرف relation posts() في User Model
+            ->with('posts') // Requires a posts() relation on the User model
             ->findOrFail($id);
     }
 

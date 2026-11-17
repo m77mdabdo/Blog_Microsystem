@@ -29,7 +29,7 @@ class PaymentController extends Controller
             'product_data' => [
                 'name' => 'Post Payment'
             ],
-            'unit_amount' => 1000, // بالسنت
+            'unit_amount' => 1000, // In cents
         ],
         'quantity' => 1,
     ]],
