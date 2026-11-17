@@ -64,7 +64,7 @@
             @enderror
         </div>
 
-        {{-- لو Admin فقط --}}
+        {{-- Admin only --}}
         @if(auth()->user()->role === 'admin')
             {{-- Paid --}}
             <div class="mb-3">

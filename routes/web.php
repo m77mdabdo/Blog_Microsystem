@@ -89,7 +89,7 @@ Route::controller(PaymentController::class)->middleware('auth')->group(function 
     Route::get('payment/confirm', 'confirm')->name('stripe.return');
 });
 
-// Webhook لا يحتاج Middleware
+// The webhook does not need middleware
 Route::post('stripe/webhook', [PaymentController::class, 'handleWebhook'])->name('stripe.webhook');
 
 

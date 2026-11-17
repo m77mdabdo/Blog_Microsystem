@@ -251,10 +251,10 @@
   crossorigin="anonymous"
 ></script>
 
-<!-- ✅ رابط سكربت AdminLTE بعد التعديل -->
+<!-- AdminLTE script link (updated) -->
 <script src="{{ asset('admin/AdminLTE/dist/js/adminlte.js') }}"></script>
 
-<!-- باقي السكربتات كما هي (CDN + كود JavaScript داخلي) -->
+<!-- Remaining scripts unchanged (CDN + inline JavaScript) -->
 <script>
   const SELECTOR_SIDEBAR_WRAPPER = '.sidebar-wrapper';
   const Default = {
@@ -276,4 +276,4 @@
   });
 </script>
 
-<!-- بقية السكربتات CDN مثل sortablejs, apexcharts, jsvectormap لا تحتاج تعديل -->
+<!-- Other CDN scripts such as sortablejs, apexcharts, jsvectormap need no changes -->
